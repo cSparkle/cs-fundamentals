@@ -1,0 +1,65 @@
+1. Programmers use pseudocode to structure algorithms in an easy-to-read manner that does not rely on a specific syntax.
+Each step in an algorithm can be identified before any code is written to create a specification for what an algroithm should do.
+
+2. Since pseudocode is not a coding language understood by computers, nothing would happen when pseudocode runs expect for a SyntaxError.
+Pseudocode is intended for humans only.
+
+Pseudocode algorithms:
+
+1. Create a function that takes two numbers and prints out the greater number.
+
+INPUT first number
+INPUT second number
+IF first number is greater than second number THEN
+    RETURN first number
+ELSE
+    RETURN second number
+ENDIF
+
+//Code:
+function greater(num1, num2) {
+	if (num1 > num2) {
+		return num1;
+	} else {
+		return num2;
+	}
+};
+
+2. Create a function that prints out the numbers from 1 to 100.
+
+INIT number to 1
+WHILE the number is less than or eqaul to 100
+    PRINT the number
+ENDWHILE
+
+//Code:
+function countNumbers() {
+	let number = 1;
+	while (number <= 100) {
+		console.log(number);
+		number++;
+	}
+};
+
+3. Create a function that searches for a specific entry in a phonebook.
+
+INIT phonebook to an array of 7-digit numbers
+INPUT search entry
+FIND the location of the search entry in the phonebook and store the result in result
+IF the search entry is not found THEN
+    RETURN "Entry not found"
+ELSE
+    RETURN result
+ENDIF
+
+//Code:
+const phonebook = [5173921598, 5173927777, 8004774747];
+
+function findEntry(searchEntry) {
+	let result = phonebook.indexOf(searchEntry);
+	if (result === -1) {
+		return "Entry not found";
+	} else {
+		return result;
+	}
+};
