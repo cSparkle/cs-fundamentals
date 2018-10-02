@@ -1,0 +1,146 @@
+1. Clean code is code written in a manner that employs DRY (Don't Repeat Yourself) practices, is easily readable, easily reusable and maintainable, and as simple as possible.
+Clean code is important for several reasons. First, it ensures a contributing developer can understand the purpose of the code. Second, it cuts down on time spent programming
+as blocks of code can be reused. Finally, it makes testing easier since it is written as simply as possible (making it easier to spot bugs).
+
+2. Examples like that found in the article on Toyota could be anywhere around us. For instance, if faulty code was embedded in a smart phone that detected when someone was making
+a call, the phone might randomly end the conversation or even place a call without the user intending to do so. While these problems aren't as severe as death due to unintended acceleration,
+they would impact a person's daily life and ability to effectively use a phone. Other problems might be issues with security if a bit of code used in a voice product (i.e. Alexa) was
+hackable and allowed someone to turn on the microphone and listen to conversations.
+
+3. I would not consider this function clean for a few reasons. First, the name of the function does not indicate the function's purpose. The same is true of the function's parameters.
+Second, a variable 'z' is initialized but never declared and (like the function name) is not semantic. Finally, the PRINT statement only needs to be used once if placed outside the IF statement.
+
+FUNCTION convertDegrees(temperature, scale)
+    IF scale equals "F" THEN
+        SET convertedTemperature to (temperature - 32) * (5/9)
+    ELSE
+        SET convertedTemperature to temperature * 1.8000 + 32.00
+    ENDIF
+    RETURN convertedTemperature
+END FUNCTION
+
+-Or-
+
+function convertDegrees(temperature, scale) {
+	if (scale === "F") {
+		var convertedTemperature = (temperature - 32) * (5/9);
+	} else {
+		convertedTemperature = temperature * 1.8000 + 32.00;
+	}
+	return convertedTemperature;
+};
+
+4. This code is very close to clean, but could use two tweaks. 
+According to naming conventions, abbreviations are bad practice so the name of the function could be changed to calculatePercent.
+Also, the print statement in the else portion of the if/else statement could be switched out so the variable result is being set instead of print being called twice.
+
+FUNCTION calculatePercent(sum, total)
+    IF NOT(total = 0) THEN
+        SET result to sum / total * 100
+    ELSE
+        SET result to "Sorry, cannot divide by 0"
+    ENDIF
+    PRINT result
+END FUNCTION
+
+-Or-
+
+function calculatePercent(sum, total) {
+    if (total !== 0) {
+        var result = sum / total * 100;
+    } else {
+        result = "Sorry, cannot divide by 0";
+    }
+    return result;
+};
+
+5. a)
+
+FUNCTION checkOutCustomer(subTotal, discountRate, paymentType)
+    SET total to subTotal * discountRate + (subTotal * tax)
+    PRINT "Your total due is: " + total
+
+    CALL getPayment RETURNING amount
+    IF paymentType = 'CASH' THEN
+       PRINT "Change due: " + (amount - total)
+    ELSE
+       PRINT "Your credit card has been charged: " + total
+    ENDIF
+END FUNCTION
+
+
+b)
+
+FUNCTION checkoutBook(book, guest)
+    IF guest.accountActive AND NOT(guest.hasOverdueBooks) AND guest.outstandingFees = 0 THEN
+        APPEND book to guest.books
+        SET book.status to "Checked Out"
+        PRINT "Your books have been issued."
+    ELSE
+        PRINT "Unable to check out book."
+    ENDIF
+END FUNCTION
+
+
+c)
+
+CLASS BankAccount
+
+    FUNCTION displayBalance
+        PRINT balance
+    END FUNCTION
+
+    FUNCTION deposit(amount)
+        SET balance to balance + amount
+    END FUNCTION
+
+    FUNCTION withdraw(amount)
+        IF balance > amount THEN
+        SET balance to balance - amount
+        ENDIF
+    END FUNCTION
+
+    FUNCTION creditCardOffer
+        IF NOT(customer.hasCreditCard) THEN
+            CALL offerCreditCard
+        ENDIF
+    END FUNCTION
+
+    FUNCTION checkingAccountOffer
+        IF NOT(customer.hasCheckingAccount) THEN
+            CALL offerCheckingAccount
+        ENDIF
+    END FUNCTION
+
+    ....
+    ....
+    ....
+
+END
+
+
+6. Square
+
+function determinePerfectSquare(numbers) {
+	var sum = numbers.reduce(function (total, currentNumber) {
+		return total + currentNumber;
+	}, 0);
+    return Math.sqrt(sum) % 1 === 0 ? Math.sqrt(sum) : sum;
+};
+
+7. Duplicate
+
+function findDuplicates(numbers) {
+    let result = [];
+    numbers.forEach(function(number, index) {
+        if (numbers.indexOf(number, index + 1) > -1 && result.indexOf(number) === -1) {
+            result.push(number);
+        }
+    });
+
+    if (result.length > 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
