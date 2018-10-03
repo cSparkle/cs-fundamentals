@@ -1,0 +1,72 @@
+1. A stack practices the LIFO (Last In First Out) method of inserting and deleting data while a queue practices (First In First Out). 
+Essentially, a stack will always remove the last element inserted before removing other elements whereas a queue will always remove the first elemented inserted before all others.
+
+2. Stacks are both ordered, sequential access data structures that hold collections of elements. They are sequential in that elements can only be accessed in a particular order (LIFO or FIFO),
+and they are ordered as each new element placed in the stack or queue enters at the same point (the top or rear, respectively). 
+
+3. I would a stack for both options. Because UNDO usually applies to the last action taken, and REDO reapplies the last action taken, a FIFO approach would be bested suited.
+
+Programming Questions:
+
+1. 
+FUNCTION reverse(originalString)
+    INIT temp as empty stack
+    FOR each character in the originalString
+        CALL temp.push
+    ENDFOR
+    INIT reversedString to empty string
+    WHILE temp is not empty
+        CALL temp.pop RETURNING character
+        APPEND character to reversedString
+    END WHILE
+    RETURN reversedString
+END FUNCTION
+
+function reverse(originalString) {
+	let temp = [];
+	for (let i = 0; i < originalString.length; i++) {
+		temp.push(originalString.charAt(i));
+	}
+	let reversedString = "";
+	while (temp.length > 0) {
+		reversedString += temp.pop();
+	}
+	return reversedString;
+}
+
+2.
+FUNCTION simulatePop(itemList)
+    FOR each item in itemList starting from index 0 and stopping with the item at index itemList.length -1
+        SET firstItem to the first item of itemList
+        REMOVE firstItem from itemList
+        APPEND firstItem to end of itemList
+    ENDFOR
+    REMOVE the first element in itemList
+    RETURN itemList
+END FUNCTION
+            
+
+function simulatePop(itemList) {
+	for (let i = 0; i < itemList.length -1; i++) {
+        let firstItem = itemList.shift();
+		itemList.push(firstItem);
+    }
+	itemList.shift();
+	return itemList;
+};
+
+3.
+
+function Queue() {
+	collection = [];
+	this.print = () => {
+		console.log(collection);
+	};
+	this.enqueue = element => {
+		collection.push(element);
+	};
+	this.dequeue = () => {
+		collection.shift();
+	};
+}
+
