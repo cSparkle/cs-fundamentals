@@ -1,0 +1,35 @@
+1.
+a) 
+let rideLine = ["Vivian", "Ava", "Josh", "Patrick", "Mike"];
+
+b) 
+rideLine.push("Mary");
+
+c) 
+const findRider = person => rideLine.indexOf(person);
+findRider("Josh"); // returns 2
+
+d) For this, we could use the same function as above but call with "Emily" as the argument. In this case, -1 will be returned because the array element does not exist.
+const findRider = person => rideLine.indexOf(person);
+findRider("Emily"); // returns -1
+
+e)
+function insertRider(newPerson, person) {
+    let currentRider = findRider(person);
+    rideLine.splice(currentRider, 0, newPerson);
+}
+
+f)
+function removeRider(person) {
+    rideLine.splice(findRider(person), 1);
+    return rideLine;
+}
+
+2. Another example that could use an array as a data structure is a program that sets appointments for things like doctor visits.
+You could use the same functionality as above to add and remove patient appointments and have access to a list of appointments that are kept in order. I would, however,
+store this type of data in an array of objects where each element in the array was an object that held data about the specific appointment (name of patient, time of appointment, doctor they are seeing, etc.)
+
+3. In either scenario, developers can access and manipulate data using built-in prototype methods which is incredibly convenient as new functions aren't necessary.
+For instance, rather than write a function to loop over each person in the line at the amusement park or each patient on the daily appointment schedule, people can be added, 
+removed, and updated using simple methods like push, pop, shift, unshift, indexOf, splice, etc. Furthermore, patient details in the array of objects can be altered using simple
+dot or bracket notation without the need for lengthy code. 
