@@ -1,0 +1,88 @@
+1. The most notable advantage of using a linked list is its ability to reduce the memory load
+making it less "expensive" in terms of storage. Whereas an array is ordered requiring the location of an element in memory
+to be directly adjacent to the next element in the array, linked lists can allocate memory for an element at any location.
+Therefore, with linked lists, the process of adding, modifying, or deleting an element/node does not impact the location of any other node, 
+but only updates the reference so all nodes are connected. With an array, all items in array need to be shifted in memory location when
+an element is added to the beginning or middle of the array.
+
+Linked lists do have a major disadvantage, though, in that elements can only be accessed in a sequential manner. With an array, 
+direct access is possible meaning the element at index 0 is just as easily retrieved as the element at index 1000. In a linked list,
+accessing the 1001th element would require traversing through all 1000 previous elements. This can be an inefficient means of access,
+especially with larger linked lists.
+
+
+2. The nearest example I can think that compares to a linked list is a person who is tracking down someone or something. This is seen often in
+TV and movies when a character is retracing their own steps in order to find something. They must start at the beginning then
+follow the "link" of references that point to a new place or person in order to get more clues as to the location of the person/thing they desire.
+
+
+Programming Answers:
+
+1. 
+Bug: the else statement should include a while loop that checks to see when current.next is equal to null (i.e. checking where the end of the list is).
+This tells this.push to keep searching for the end of the list. Once this is reached, then <SET current.next to node> should be run to add the element passed to 
+the function that is set to this.push. 
+
+Within a LinkedList class, the push function would look like so:
+
+const Node = function(element) {
+    this.element = element;
+    this.next = null;
+}
+
+this.push = function(element) {
+    const node = new Node(element);
+    if (head === null) {
+        head = node;
+    } else {
+        let currentNode = head;
+        while (currentNode.next) {
+            currentNode = currentNode.next;
+        }
+
+        currentNode.next = node;
+    }
+};
+
+2.
+
+                                                    function findDuplicates(arrayOfItems) {
+                                                        for (let i = 0; i < arrayOfItems.length; i++) {
+                                                            for (let j = 1; j < arrayOfItems.length; j++) {
+                                                                console.log("This is i: " + arrayOfItems[i]);
+                                                                console.log("This is j: " + arrayOfItems[j]);
+                                                            }
+                                                        }
+
+                                                    };
+
+                                                    function findDuplicates(arrayOfItems) {
+                                                        let i = 0
+                                                        while (i < arrayOfItems.length) {
+                                                            if (arrayOfItems[i] === arrayOfItems[i + 1]) {
+                                                                console.log("These are a match");
+                                                                arrayOfItems.splice(arrayOfItems[i], 1);
+                                                            } else {
+                                                                console.log("Nope");
+                                                            }
+
+                                                            i++
+                                                        }
+                                                        return arrayOfItems;
+                                                    }
+
+
+                                                    function findDuplicates(arrayOfItems) {
+                                                        let i = 0;
+                                                        let j = 1;
+                                                        while (i < arrayOfItems.length) {
+                                                            if (arrayOfItems[i] === arrayOfItems[j]) {
+                                                                console.log("These are a match");
+                                                                arrayOfItems.splice(arrayOfItems[j], 1);
+                                                            } else {
+                                                                console.log("Nope");
+                                                            }
+                                                            i++
+                                                        }
+                                                        return arrayOfItems;
+                                                    };
