@@ -1,0 +1,173 @@
+1. A hash table is an abstract data structure similar to both an array and an object. The hash table organizes data using key/value pairs and
+stores this data in a bucket that corresponds to an index in the hash table.
+
+2. Hashing is the process of organizing data and generating hash codes. When data is added to a hash table, the hash function generates a hash code, a numerical representation of the data key,
+and computes an index where the data will be stored.
+
+3. Hash tables store data in buckets that contain the key/value pair and the hash code. During hashing, the key--which can be of any data type--is "hashed" into a numerical value
+which is then associated with the key/value pair. Since these values can be quite large, the hashing function converts hash codes into indices using modulus, ensuring that no index will
+be produced that is larger than the number of data elements in the table. The combination of index and hash code is then used to search for data and,
+when found, produces the value stored in the associated bucket. 
+
+4. The main difference between a hash table and object is that object values are accessed using dot or bracket notation and passing in the key. On the other hand, hash tables use
+indices and hash codes to access values.
+
+5. 
+a) Object, assuming the list is not likely to grow or change often.
+b) Object, as this will remain constant for a year at a time.
+c) Hash table, since this is probably an incredibly large set of data and will change regularly when businesses open or close.
+d) Hash table, because this is also likely to change frequently.
+e) Object, as this will remain relatively static.
+
+6.
+
+var hash = (string, max) => {
+    var hash = 0;
+    for (var i = 0; i < string.length; i++) {
+        hash += string.charCodeAt(i);
+    }
+    return hash % max;
+};
+
+let HashTable = function() {
+
+    let storage = [];
+    const storageLimit = 50;
+
+    this.add = function(phone, name, address) {
+        var index = hash(phone, storageLimit);
+        if (storage[index] === undefined) {
+            storage[index] = [
+                [phone, [name, address]]
+            ];
+        } else {
+            var inserted = false;
+            for (var i = 0; i < storage[index].length; i++) {
+                if (storage[index][i][0] === phone) { 
+                    storage[index][i][1] = [name, address];
+                    inserted = true;
+                }
+            }
+            if (inserted === false) {
+                storage[index].push([phone, [name, address]]);
+            }
+        }
+    };
+
+    this.lookup = function(phone) {
+        var index = hash(phone, storageLimit);
+        if (storage[index] === undefined) {
+            return undefined;
+        } else {
+            for (var i = 0; i < storage[index].length; i++) {
+                if (storage[index][i][0] === phone) {
+                    return storage[index][i][1];
+                }
+            }
+        }
+    };
+};
+
+
+7.
+
+var hash = (string, max) => {
+    var hash = 0;
+    for (var i = 0; i < string.length; i++) {
+        hash += string.charCodeAt(i);
+    }
+    return hash % max;
+};
+
+let HashTable = function() {
+
+    let storage = [];
+    const storageLimit = 50;
+
+    this.print = function() {
+        console.log(storage);
+    };
+
+    this.add = function(itemName, count) {
+        var index = hash(itemName, storageLimit);
+        if (storage[index] === undefined) {
+            storage[index] = [
+                [itemName, count]
+            ];
+        } else {
+            var inserted = false;
+            for (var i = 0; i < storage[index].length; i++) {
+                if (storage[index][i][0] === itemName) { 
+                    storage[index][i][1] = count;
+                    inserted = true;
+                }
+            }
+            if (inserted === false) {
+                storage[index].push([itemName, count]);
+            }
+        }
+    };
+
+    this.lookup = function(itemName) {
+        var index = hash(itemName, storageLimit);
+        if (storage[index] === undefined) {
+            return undefined;
+        } else {
+            for (var i = 0; i < storage[index].length; i++) {
+                if (storage[index][i][0] === itemName) {
+                    return storage[index][i][1];
+                }
+            }
+        }
+    };
+};
+
+
+8.
+
+var hash = (string, max) => {
+    var hash = 0;
+    for (var i = 0; i < string.length; i++) {
+        hash += string.charCodeAt(i);
+    }
+    return hash % max;
+};
+
+let HashTable = function() {
+
+    let storage = [];
+    const storageLimit = 50;
+
+    this.add = function(publisherAndDate, newspaper) {
+        var index = hash(publisherAndDate, storageLimit);
+        if (storage[index] === undefined) {
+            storage[index] = [
+                [publisherAndDate, newspaper]
+            ];
+        } else {
+            var inserted = false;
+            for (var i = 0; i < storage[index].length; i++) {
+                if (storage[index][i][0] === publisherAndDate) { 
+                    storage[index][i][1] = newspaper;
+                    inserted = true;
+                }
+            }
+            if (inserted === false) {
+                storage[index].push([publisherAndDate, newspaper]);
+            }
+        }
+    };
+
+    this.lookup = function(publisherAndDate) {
+        var index = hash(publisherAndDate, storageLimit);
+        if (storage[index] === undefined) {
+            return undefined;
+        } else {
+            for (var i = 0; i < storage[index].length; i++) {
+                if (storage[index][i][0] === publisherAndDate) {
+                    return storage[index][i][1];
+                }
+            }
+        }
+    };
+};
