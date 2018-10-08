@@ -44,26 +44,7 @@ this.push = function(element) {
     }
 };
 
-2. 
-
-this.reverse = function() {
-		if (head === null || head.next === null) {
-			return head;
-		}
-		var alreadyReversed;
-		var currentNode = head;
-		var storedPointer;
-
-		while (currentNode !== null) {
-			storedPointer = currentNode.next;
-			currentNode.next = alreadyReversed;
-			alreadyReversed = currentNode;
-			currentNode = storedPointer;
-		}
-
-	};
-
-  3.
+2.  
 
   this.removeDuplicates = function() {
         
@@ -84,6 +65,30 @@ this.reverse = function() {
             compareNode = compareNode.next;
         }
     }; 
+};
+
+  3.
+
+  this.reverse = function() {
+		if (head === null || head.next === null) {
+			return head;
+		}
+		var alreadyReversed;
+		var currentNode = head;
+		var storedPointer;
+
+		while (currentNode !== null) {
+			storedPointer = currentNode.next;
+			currentNode.next = alreadyReversed;
+			alreadyReversed = currentNode;
+			currentNode = storedPointer;
+		}
+		head = alreadyReversed;
+		return alreadyReversed;
+
+	};
+
+  
 
 
 
@@ -169,43 +174,5 @@ function LinkedList() {
 		}
 		return currentNode.element;
 	};
-
-  this.reverse = function() {
-		if (head === null || head.next === null) {
-			return head;
-		}
-		var alreadyReversed;
-		var currentNode = head;
-		var storedPointer;
-
-		while (currentNode !== null) {
-			storedPointer = currentNode.next;
-			currentNode.next = alreadyReversed;
-			alreadyReversed = currentNode;
-			currentNode = storedPointer;
-		}
-		return alreadyReversed;
-
-	};
-    
-    this.removeDuplicates = function() {
-        
-        var currentNode = head;
-        var compareNode = currentNode.next;
-        var nodes = {};
-
-        nodes[currentNode.data] = true;
-
-        while (compareNode !== null) {
-            var data = compareNode.data;
-            if (nodes[data]) {
-                currentNode.next = compareNode.next;
-            } else {
-                nodes[data] = true;
-                currentNode = compareNode;
-            }
-            compareNode = compareNode.next;
-        }
-    }; 
 };
 
