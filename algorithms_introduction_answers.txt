@@ -1,0 +1,49 @@
+1. a)
+FUNCTION make coffee
+    READ status
+    IF status equals null THEN
+        SET completed to false
+        SET brewing to false
+        SET basket to null
+        WHILE basket is not full
+            basket equals basket plus one
+        ENDWHILE
+        SET brewing to true
+        SET completed to true
+    ENDIF
+END FUNCTION
+
+1. b)
+FUNCTION wash dishes
+    READ status
+    IF status equals dirty THEN
+        SET isDirty to true
+        WHILE isDirty = true
+            wash dishes
+        ENDWHILE
+        SET isDirty to false
+    ENDIF
+END FUNCTION
+
+1. c)
+FUNCTION fold laundry
+    READ status
+    IF status equals unfolded THEN
+        SET isFolded to false
+        WHILE isFolded = false
+            fold laundry
+        END WHILE
+        SET isFoled to true
+    ENDIF
+END FUNCTION
+
+2. There are three successful algorithms that instantly come to mind. First, eHarmony constantly boasts the ability of it's algorithm to create successful dating matches among its users.
+They claim to have a 94% match success rate, which is incredibly high. Another company is Amazon for its ability to provide recommendations for products. Amazon uses a variety
+of factors when considering what to recommend, including what others have purchased, related promoted products to that which you are viewing, and recommendations based on items on your wish list.
+Finally, a successful algorithm would be that maintained by FaceBook to update each user's news feed. Like Amazon, FaceBook takes multiple inputs and provides a seamless user experience
+by evaluating likes, comments, and posted content to determine which friend updates a user will see and which promoted content. All of these companies have prospered and become household names
+because their algorithms work efficiently and provide automation for a service that may not otherwise have been able to be automated. 
+
+3. Like any other code, there are a few things that likely make an effective algorithm. First, it must work. Second, it must be efficient in terms of speed of performance.
+Third, it must be reusable so that it can be dropped into any related code and functioning properly. Finally, it should probably be readable to the degree that the creator and
+any other developers can understand its purpose.
