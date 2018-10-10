@@ -1,0 +1,29 @@
+1. Time complexity denotes the length of time an algorithm will take to run based on the number of constants, inputs, and looping statements. 
+Time complexity is crucial for determining how performant an algorithm is, and gets more important as the number of inputs gets larger as this increases the length
+of time it takes to complete the algorithm.
+
+2. Runtime, synonymous with time complexity, is the actual length of time an algorithm takes to run computed by the time complexity function.
+
+3. Runtime is calculated using a time complexity (a.k.a. Big O) function. First, the number of instructions or statements present in the algorithm is
+determined and added up based on the number (n) of inputs processed by these instructions. Once added, the number of constants is removed resulting in runtime.
+
+4. 
+Constant growth rate O(1)
+Double logarithmic growth rate O(log log n)
+Logarithmic growth rate O(log n)
+Linear growth rate O(n)
+Log-linear growth rate O(n log n)
+Quadratic growth rate O(n^2)
+Exponential growth rate O(2^n)
+
+5. The linear growth rate is comparable to a stack of dishes. The amount of time it takes to complete washing the dishes increases equally with each new dish 
+added to the pile. 
+
+6. O(n)
+
+7. O(n^2)
+
+8. O(2^n)
+
+9. The linear search in problem number 6
+
