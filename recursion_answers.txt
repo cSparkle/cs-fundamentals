@@ -1,0 +1,61 @@
+1. Recursion and iteration are both ways to repeat the same algorithm until a particular condition or base case is reached. With recursion,
+the problem is broken into smaller sub-problems, each of them solved, and then simplified to produce the result. In essence, the same
+algorithm is repeated over and over on the same input until the base case is reached. In the case of iteration, a specific set of instructions is applied to every element in a grouping
+until the grouping has been looped over. 
+
+2. The fibonacci sequence, finding number factorials, performing a binary search, the Euclid algorithm (finding the greatest common divisor of a group of numbers), 
+Dijkstra's algorithm (also for GCD).
+
+3. Because recursion is often less performant than iteration (as it repeats steps), it should be used with caution, but offers benefits as some algorithms written in
+an iterative fashion are more complex to create and understand than their recursive counterpart. If a problem is solved by repeatedly applying the same instructions to solve
+simple problems, recursion is the best approach. For instance, recursion would be useful for summing a list of numbers because the problem can be solved by summing the first
+two numbers, then summing the result with the third number, then summing that result with the fourth number, etc. Iterative algorithms are generally more efficient and are
+especially useful in scenarios where only one loop over a group of elements in necessary. For example, finding a given number in a list of numbers would be simple with 
+iteration because we could simply loop over each number in a list to see if that number matches the one provided. 
+
+4. 
+a) Factorial: In both the iterative and recursive algorithms, base cases are set to identify what happens when a particular condition occurs. Both also use if/else statements.
+The major difference is that the recursive algorithm calls itself in order to repeat the operation for each new number whereas the iterative algorithm loops over each new number.
+
+b) Maximum: The first difference between the iterative and recurisve algorithm is that the recurisve one checks to see whether the input is empty or only contains a single number.
+It must do so in order to provide a base case. The remainder of each algorithm does essentially the same thing: the first number is stored as the comparison, and then each number
+after is compared to see whether it is larger or smaller. Then, the maximum number of the remaining numbers is compared to the first number to find the larger of the two.
+
+c) Fibonacci: The recursive algorithm for this problem seems much simpler than the iterative algorithm. While both set the first two numbers to equal 1, the iterative algorithm
+must use placeholders to temporarily store numbers as they are calculated in the sequence and then shift the placeholders after each calculation. The recursive algorithm, on the other hand,
+is able to simply call itself twice in a row, once for the number that is two numbers before the current and once for the number directly before the current.
+
+5.
+
+function countItems(collection) {
+    if (collection.length === null || collection.length === 0) {
+        return "error";
+    } else {
+        let total = 0;
+        for (let i = 0; i < collection.length; i++) {
+            if(Array.isArray(collection[i])) {
+                total += countItems(collection[i]); 
+            } else {
+                total++
+            }
+        }
+        return total;
+    }
+};
+
+6.
+
+function isPalindrome(word) {
+    if (word.length === 1 || word === " ") {
+        return true;
+    } else {
+        if (word.charAt(0) != word.charAt(word.length - 1)) {
+            return false;
+        } else {
+            return isPalindrome(word.substring(1, word.length - 1));
+        }
+    }
+};
+
+7. It exhibits recursion because the very nature of recursive is to repeat the same operation. By offering to the "Did you mean: recursion?" It is running the exact same
+search again in a recursive fashion. It's a very dry joke.
