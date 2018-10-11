@@ -1,0 +1,51 @@
+1. This could be when someone is searching over a menu at a restaurant they've never been to. They probably have an idea of what they are looking for,
+but because they are not familiar with the menu, they have to search over each part of the menu in order to get to what they are looking for.
+
+2. This could be searching for a particular page in a book. When I do this, I open the book to a random page around the middle, then determine if the page I opened
+is lower than or greater than the page I'm searching for. Then, I continue my search in the appropriate direction using the same technique. 
+
+3. Seven iterations
+
+4. Three iterations
+
+5. Unless the collection could be sorted, I would have to choose linear. Even though this requires a greater number of iterations, I have no way of knowing whether the items
+below and above the midpoint are actually less than and greater than the mid, respectively. Therefore, a binary search would be impossible.
+
+6. In this scenario, I would most certainly choose a binary search. Since linear searches must iterate over every item, this would result in one million iterations and a very 
+inefficient algorithm. Using a binary search, I can effectively cut this down to around 20 iterations. 
+
+7.
+
+function findValue(collection, value) {
+    let low = 0,
+        high = collection.length - 1,
+        mid,
+        element;
+    while (low <= high) {
+        mid = Math.floor((low + high) / 2, 10);
+        element = collection[mid];
+        if (element < value) {
+            low = mid + 1;
+        } else if (element > value) {
+            high = mid - 1;
+        } else {
+            return mid;
+        }
+    }
+    return "Not Found";
+}
+
+8.
+
+function findFish(collection, target) {
+    var result = null,
+        value;
+    for (let i = 0; i < collection.length; i++) {
+        value = collection[i];
+        if (value === target) {
+            result = i;
+            break;
+        }
+    }
+    return result;
+};
