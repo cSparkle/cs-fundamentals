@@ -67,6 +67,36 @@ class BST {
         this.root = null;
     }
 
+    add(data) {
+            const node = this.root;
+            if (node === null) {
+                //If this is the first node it will equal null, so we will just set root to the new data we are adding
+                this.root = new Node(data);
+                return;
+            } else { //If it's not the first node, we use the below recursive function to determine where to put the new node/data
+                const searchTree = function(node) {
+                    if (data < node.data) { //The node will go to the left side of the tree if the data is less than the data at the root since node = this.root
+                        if (node.left === null) { //If the left side doesn't exist yet, we're just going to create a new node there
+                            node.left = new Node(data);
+                            return;
+                        } else if (node.left !== null) { //Otherwise, if a left node does exist, we're going to keep running the function searchTree until it is null (until it reaches the end) then put the new node there
+                            return searchTree(node.left);
+                        }
+                    } else if (data > node.data) { //If the new data is more than root data, we're going to put it to the right side of tree
+                        if (node.right === null) { //We do the same checks here as above, searching through tree to find the end then inserting new node/data
+                            node.right = new Node(data);
+                            return;
+                        } else if (node.right !== null) {
+                            return searchTree(node.right);
+                        }
+                    } else { //If the new data is not more than or less than the data at the root (i.e. they are equal), we won't add the data
+                        return null;
+                    }
+                };
+                return searchTree(node); //How we initially call the searchTree function to get the whole process started
+            }
+        };
+
     find(data) {
         let current = this.root;
         let distance = 0;
