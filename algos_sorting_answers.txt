@@ -1,0 +1,47 @@
+1. 
+ FUNCTION bubbleSort(collection)
+   REPEAT
+     SET swapped to false
+     FOR i, starting from first index of collection to last index of collection - 1
+       IF collection[i] > collection[i + 1] THEN
+         SET tmp to collection[i]
+         SET collection[i] to collection[i + 1]
+         SET collection[i + 1] to tmp
+         SET swapped to true
+       ENDIF
+     ENDFOR
+   UNTIL swapped is FALSE
+   RETURN collection
+ END FUNCTION
+
+
+2. 
+FUNCTION quickSort(collection)
+    SET middle to ROUNDED DOWN(length of collection / 2)
+    SET pivot to collection[middle]
+    SET less to empty ARRAY
+    SET more to empty ARRAY
+
+    FOR i, starting from second index of collection to last index of collection
+        IF collection[i] is less than pivot THEN
+            APPEND collection[i] to less
+        ELSE THEN
+            APPEND collection[i] to more
+        ENDIF
+    ENDFOR
+    RETURN quickSort(less).concat(pivot, quickSort(more))
+END FUNCTION
+
+3. Although merge sort is a recursive approach to sorting, both merge sort and quick sort are considered "divide and conquer" algorithms because they
+divide the collection to be processed and perform work on each sub-collection. This negates the necesseity of iterating over each data peice every time
+the algorithm is run such as in a bubble sort. For instance, Merge initially breaks down a collection to its smallest units, then creates pairs, compares the values in these pairs
+and continues this process until the collection is once again joined but in a sorted order. Similarly, quick sort essentially cuts work in half by choosing a pivot point,
+then organizing all data to either the right or left of the point based on whether it is greater or lesser, respectively. The collection is then broken down and the process
+repeated until all items are sorted, then the collection is joined together. Basically, their divide and conquer strategies result in fewer runs compared to algorithms
+that must iterate over all data at every pass.
+
+4. 
+Elements in an array are placed into bins or buckets, then the elements within each bucket are sorted. Finally, the contents the of buckets are "dumped" in sorted order back
+into an array. This is, in many ways, similar to merge sort where the sorting process takes place on sub-collections. For bucket sort to work effectively, though, the elements
+in the array must be uniformly distributed. Otherwise, the algorithm may perform more work than necessary and become less efficient. One use case for a bucket sort might be
+sorting individuals based on their school ID or similar, assuming the IDs start at a given number (e.g. 001) and progress upward in equal increments (e.g. 002, 003, 004, etc.). 
